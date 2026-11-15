@@ -18,3 +18,6 @@ Thumbs.db
 
 # Root source copy of resume (served from public/Osman-Ghantiwala-Resume.pdf)
 Osman Ghantiwala Latest Resume PDF.pdf
+
+# Local agent memory (keep admin links out of public repo)
+GEMINI.md
