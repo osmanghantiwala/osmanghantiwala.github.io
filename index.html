@@ -261,10 +261,12 @@
         </div>
 
         <div class="md:col-span-7">
-          <form data-contact-form class="space-y-4 max-w-xl">
-            <!-- Web3Forms Integration Field -->
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <form action="https://api.web3forms.com/submit" method="POST" data-contact-form class="space-y-4 max-w-xl">
+            <!-- Web3Forms Integration Fields -->
+            <input type="hidden" name="access_key" value="cabe6fa5-1caa-4343-a5e4-9d9c26e3c89f" />
             <input type="hidden" name="subject" value="New Inquiry from GB Consulting Website" />
+            <input type="hidden" name="from_name" value="GB Consulting Website" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
             
             <div>
               <input 

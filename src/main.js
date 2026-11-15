@@ -29,27 +29,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Client-side contact form handler (graceful fallback / preview)
+  // Web3Forms live contact form handler
   const contactForms = document.querySelectorAll('form[data-contact-form]');
   contactForms.forEach(form => {
     form.addEventListener('submit', async (e) => {
-      const accessKey = form.querySelector('input[name="access_key"]');
-      if (!accessKey || accessKey.value === 'YOUR_ACCESS_KEY_HERE') {
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Sending...';
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.dataset.originalText || submitBtn.innerText;
+      submitBtn.dataset.originalText = originalBtnText;
 
-        setTimeout(() => {
+      const existingStatus = form.querySelector('[data-form-status]');
+      if (existingStatus) existingStatus.remove();
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending...';
+
+      const statusEl = document.createElement('p');
+      statusEl.setAttribute('data-form-status', 'true');
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData,
+        });
+        const result = await response.json();
+
+        if (response.ok && result.success) {
           submitBtn.innerText = '✓ Message Sent!';
-          submitBtn.classList.remove('bg-black', 'hover:bg-neutral-800');
+          submitBtn.classList.remove('bg-black', 'bg-neutral-600', 'bg-neutral-700', 'hover:bg-neutral-800', 'hover:bg-neutral-900');
           submitBtn.classList.add('bg-emerald-700', 'text-white');
           form.reset();
-          const note = document.createElement('p');
-          note.className = 'text-sm text-emerald-700 mt-3 text-center font-medium animate-fade-in';
-          note.innerText = 'Thank you! Your message has been received. Osman will contact you shortly.';
-          form.appendChild(note);
-        }, 600);
+          statusEl.className = 'text-sm text-emerald-700 mt-3 font-medium';
+          statusEl.innerText = 'Thank you! Your message has been sent. We will be in touch shortly.';
+          form.appendChild(statusEl);
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+        statusEl.className = 'text-sm text-red-700 mt-3 font-medium';
+        statusEl.innerHTML = 'Unable to send right now. Please email <a href="mailto:solutions4acct@gmail.com" class="underline">solutions4acct@gmail.com</a> or call <a href="tel:4162986841" class="underline">416-298-6841</a>.';
+        form.appendChild(statusEl);
       }
     });
   });

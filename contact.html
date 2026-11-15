@@ -100,9 +100,11 @@
 
     <!-- Centered Form -->
     <section class="max-w-xl mx-auto px-6 py-8 pb-20">
-      <form data-contact-form class="space-y-4 bg-white p-6 sm:p-8 rounded-sm border border-neutral-200 shadow-sm">
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      <form action="https://api.web3forms.com/submit" method="POST" data-contact-form class="space-y-4 bg-white p-6 sm:p-8 rounded-sm border border-neutral-200 shadow-sm">
+        <input type="hidden" name="access_key" value="cabe6fa5-1caa-4343-a5e4-9d9c26e3c89f" />
         <input type="hidden" name="subject" value="Inquiry from GB Consulting Contact Page" />
+        <input type="hidden" name="from_name" value="GB Consulting Website" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
 
         <div>
           <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 mb-1.5">Full Name</label>
