@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs & local env
+*.log
+.env
+.env.*
+*.local
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Root source copy of resume (served from public/Osman-Ghantiwala-Resume.pdf)
+Osman Ghantiwala Latest Resume PDF.pdf
