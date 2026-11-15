@@ -54,19 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Newsletter form handler
-  const newsletterForms = document.querySelectorAll('form[data-newsletter-form]');
-  newsletterForms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.innerText = 'Subscribed!';
-      btn.classList.add('bg-neutral-800');
-      form.reset();
-    });
-  });
-
   // Initialize Interactive Portfolio Explorer
   initPortfolioExplorer();
 });
