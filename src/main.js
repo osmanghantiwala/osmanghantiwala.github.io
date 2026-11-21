@@ -7,15 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
 
+  const openMobileMenu = () => {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+  };
+
+  const closeMobileMenu = () => {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+  };
+
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('hidden');
-    });
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
   }
 
   if (mobileMenuClose && mobileMenu) {
-    mobileMenuClose.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+  }
+
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
     });
   }
 
