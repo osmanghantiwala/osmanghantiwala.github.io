@@ -4,7 +4,7 @@ export const portfolioEngagements = [
     name: "Starlight Investments",
     sector: "real-estate",
     sectorLabel: "Real Estate & Asset Mgmt",
-    period: "Jan. 2020 – Sep. 2026",
+    period: "Jan. 2020 – Present",
     role: "Asset Management & Financial Advisory",
     systems: ["Yardi Voyager", "NetSuite"],
     highlight: "Financial oversight, acquisition modeling, and reporting across multi-family and commercial real estate portfolios."
