@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
 
         if (response.ok && result.success) {
+          window.umami?.track('contact-submit');
           submitBtn.innerText = '✓ Message Sent!';
           submitBtn.classList.remove('bg-black', 'bg-neutral-600', 'bg-neutral-700', 'hover:bg-neutral-800', 'hover:bg-neutral-900');
           submitBtn.classList.add('bg-emerald-700', 'text-white');
