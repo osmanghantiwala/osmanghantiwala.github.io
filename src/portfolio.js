@@ -1,13 +1,13 @@
 export const portfolioEngagements = [
   // Real Estate, Development & Construction
   {
-    name: "Starlight Investments",
+    name: "GB Consulting",
     sector: "real-estate",
     sectorLabel: "Real Estate & Asset Mgmt",
     period: "Jan. 2020 – Present",
-    role: "Asset Management & Financial Advisory",
-    systems: ["Yardi Voyager", "NetSuite"],
-    highlight: "Financial oversight, acquisition modeling, and reporting across multi-family and commercial real estate portfolios."
+    role: "Consultant (Accountant / Analyst / Controller)",
+    systems: ["NetSuite", "MS Dynamics GP", "Yardi Voyager"],
+    highlight: "Clients: YAD Investments, Starlight Investments, Queen St. Group, Birchstone Devlp., and Cintrex Property Mgmt — financial oversight, acquisition modeling, and reporting across multi-family and commercial real estate portfolios."
   },
   {
     name: "Minto – Urban Developments",
